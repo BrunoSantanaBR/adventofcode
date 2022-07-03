@@ -5,6 +5,7 @@
   <version>1.0</version>
   <modules>
 	<module>Day1</module>
+	<module>Day2</module>
   </modules>
  <packaging>pom</packaging>
 </project>
