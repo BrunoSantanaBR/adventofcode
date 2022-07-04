@@ -16,7 +16,32 @@ public class Day2 {
 
 		List<String> movementsArray = getPuzzleInput();
 		System.out.println(getFinalHorizontalDepthPosition(movementsArray));
+		System.out.println(getFinalHorizontalDepthPositionWithAim(movementsArray));
 		System.out.println("Finish");
+	}
+
+	private static int getFinalHorizontalDepthPositionWithAim(List<String> movementsArray) {
+
+		int horizontal = 0;
+		int depth = 0;
+		int aim = 0;
+
+		for (String movement : movementsArray) {
+
+			if (movement.indexOf("forward") > -1) {
+				int unit = Integer.parseInt(movement.substring(movement.indexOf(" ") + 1));
+				horizontal = horizontal + unit;
+				depth = depth + (unit * aim);
+			} else if (movement.indexOf("down") > -1) {
+				aim = aim  + Integer.parseInt(movement.substring(movement.indexOf(" ") + 1));
+			}else if (movement.indexOf("up") > -1) {
+				aim = aim - Integer.parseInt(movement.substring(movement.indexOf(" ") + 1));
+			}
+
+		}
+		
+		
+		return horizontal * depth;
 	}
 
 	private static int getFinalHorizontalDepthPosition(List<String> movementsArray) {
